@@ -23,11 +23,20 @@ FRAMES = 128
 LABELS = ["angry", "happy", "neutral", "sad"]  # LabelEncoder order from the notebook
 
 
+# Below about -60 dBFS there is nothing to classify. Without this, trim() keeps an
+# all-silent clip whole, and peak-normalising near-silence turns hiss into a full-scale
+# signal, so a silent recording still came back as an emotion.
+SILENCE_PEAK = 1e-3
+
+
 def load_audio(path: str) -> np.ndarray:
+    """The clip as the model was trained on it; empty if it is silent."""
     y, _ = librosa.load(path, sr=SAMPLE_RATE, mono=True)
     y, _ = librosa.effects.trim(y, top_db=20)
     peak = np.max(np.abs(y)) if y.size else 0.0
-    return y / peak if peak > 0 else y
+    if peak < SILENCE_PEAK:
+        return np.zeros(0, dtype=np.float32)
+    return y / peak
 
 
 def mel_features(y: np.ndarray) -> np.ndarray:

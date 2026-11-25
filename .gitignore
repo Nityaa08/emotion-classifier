@@ -4,3 +4,7 @@ __pycache__/
 flagged/
 .gradio/
 data/
+*.wav
+.ipynb_checkpoints/
+.DS_Store
+.pytest_cache/
