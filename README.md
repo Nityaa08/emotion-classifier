@@ -43,7 +43,7 @@ python app.py                    # Gradio demo on http://127.0.0.1:7860
 streamlit run streamlit_app.py
 ```
 
-To retrain, open `Ravdess (1).ipynb`; its first cell downloads RAVDESS (about 215 MB) from Zenodo.
+To retrain, open `ravdess_training.ipynb`; its first cell downloads RAVDESS (about 215 MB) from Zenodo.
 
 ## Fixed on 2026-11-13
 

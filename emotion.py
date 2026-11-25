@@ -1,5 +1,5 @@
 """
-Inference for the speech-emotion CNN trained in `Ravdess (1).ipynb`.
+Inference for the speech-emotion CNN trained in `ravdess_training.ipynb`.
 
 The preprocessing here must match the notebook exactly, or the model sees
 different inputs from the ones it was trained on:
